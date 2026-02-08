@@ -21,6 +21,7 @@ const Income = () => {
 
   const [openAddIncomeModal, setOpenAddIncomeModal] = useState(false);
 
+  // marrja e te dhenave
   const fetchIncomeDetails = async () => {
     if (loading) return;
 
@@ -29,7 +30,7 @@ const Income = () => {
     try {
       const response = await axiosInstance.get(API_PATHS.INCOME.GET_ALL_INCOME);
       if (response.data) {
-        setIncomeData(response.data);
+        setIncomeData(response.data); //perditesime i incomedata
       }
     } catch (error) {
       console.log("Something went wrong. Please try again", error);
@@ -40,8 +41,9 @@ const Income = () => {
   
   //Handle Add Income
   const handleAddIncome = async (income) => {
-  const { source, amount, date, icon } = income;
+  const { source, amount, date, icon } = income; //object destructuring
 
+ // validim
   if (!source.trim()) {
     toast.error("Source is required.");
     return;
@@ -57,7 +59,7 @@ const Income = () => {
     return;
   }
 
-  try{
+  try{    //API call
     await axiosInstance.post(API_PATHS.INCOME.ADD_INCOME, {
       source,
       amount,
@@ -96,10 +98,11 @@ const Income = () => {
       const response = await axiosInstance.get(
         API_PATHS.INCOME.DOWNLOAD_INCOME,
         {
-          responseType: "blob",
+          responseType: "blob", //binary data
         }
       );
 
+      //download - excel file
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
       link.href = url;

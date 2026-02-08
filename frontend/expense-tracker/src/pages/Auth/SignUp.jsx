@@ -22,6 +22,7 @@ const SignUp = () => {
   const {updateUser} = useContext(UserContext);
   const navigate = useNavigate();
 
+    //data validation
   const handleSignUp = async (e) => {
     e.preventDefault();
 
@@ -45,12 +46,13 @@ const SignUp = () => {
     setError("");
 
     try{
-
+        //Uploading a profile picture
       if (profilePic) {
         const imgUploadRes = await uploadImage(profilePic);
         profileImageUrl = imgUploadRes.imageUrl || "";
       }
 
+        // SignUp API Call
       const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER,{
         fullName,
         email,

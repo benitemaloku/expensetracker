@@ -1,15 +1,17 @@
 import moment from "moment";
 
+//email
 export const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
 };
 
+//inicialet e fullName
 export const getInitials = (name) => {
     if(!name) return "";
 
     const words = name.split(" ");
-    let initials = " ";
+    let initials = "";
 
     for (let i = 0; i < Math.min(words.length, 2); i++) {
         initials += words[i][0];
@@ -18,7 +20,7 @@ export const getInitials = (name) => {
     return initials.toUpperCase();
 };
 
-
+//ndarja me "." te shumave 
 export const addThousandsSeparator = (num) => {
     if(num == null || isNaN(num)) return "";
 

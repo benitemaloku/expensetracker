@@ -9,6 +9,7 @@ const SideMenu = ({activeMenu}) => {
 
     const navigate = useNavigate();
 
+    //logout
     const handleClick = (route) => {
         if (route === "logout") {
             handleLogout();
@@ -33,6 +34,7 @@ const SideMenu = ({activeMenu}) => {
                     className='w-20 h-20 bg-slate-400 rounded-full'
                 />
                 ) : (
+                    //initial
                     <CharAvatar
                         fullName={user?.fullName}
                         width="w-20"
@@ -45,11 +47,13 @@ const SideMenu = ({activeMenu}) => {
                 {user?.fullName || ""}
             </h5>
         </div>
+    
         {SIDE_MENU_DATA.map((item, index) => (
+            // menu data
             <button
                 key={`menu_${index}`}
                 className={`w-full flex items-center gap-4 text-[15px] ${
-                   activeMenu == item.label ? "text-white bg-primary" :""
+                   activeMenu == item.label ? "text-white bg-primary" :"" 
                 } py-3 px-6 rounded-lg mb-3`}
                 onClick={() => handleClick(item.path)}
                 >

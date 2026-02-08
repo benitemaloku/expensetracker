@@ -5,6 +5,7 @@ import axiosInstance from "../utils/axiosinstance";
 import { API_PATHS } from "../utils/apiPaths";
 import { useContext } from "react";
 
+//custom React hook
 export const useUserAuth = () => {
     const {user, updateUser, clearUser} = useContext(UserContext);
     const navigate = useNavigate();

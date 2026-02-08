@@ -47,6 +47,7 @@ const Expense = () => {
   const handleAddExpense = async (expense) => {
   const { category, amount, date, icon } = expense;
 
+  //validim
   if (!category.trim()) {
     toast.error("Category is required.");
     return;
@@ -97,6 +98,7 @@ const Expense = () => {
     }
   };
 
+  //download expense
   const handleDownloadExpenseDetails = async () => {
      try{
       const response = await axiosInstance.get(

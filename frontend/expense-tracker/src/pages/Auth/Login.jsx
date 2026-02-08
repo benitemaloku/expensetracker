@@ -8,7 +8,7 @@ import { API_PATHS } from '../../utils/apiPaths';
 import {UserContext} from "../../context/UserProvider"
 
 
-export const Login = () => {
+export const Login = () => {                
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null); 
@@ -16,7 +16,7 @@ export const Login = () => {
   const { updateUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  // Handle form submission
+  // Handles login form submission
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -53,7 +53,8 @@ export const Login = () => {
       }
     }
   }
-
+  
+  // Render login page UI
   return (
     <AuthLayout>
       <div className='lg:w-[70%] h-3/4 md:h-full flex flex-col justify-center'>
