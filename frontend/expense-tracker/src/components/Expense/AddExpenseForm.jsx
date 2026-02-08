@@ -31,15 +31,15 @@ const AddExpenseForm = ({ onAddExpense }) => {
       label="Amount"
       placeholder="€"
       type="number"
-      />
+    />
 
-      <Input
+    <Input
       value={income.date}
       onChange={({ target }) => handleChange("date", target.value)}
       label="Date"
       placeholder=""
       type="date"
-      />
+    />
       
     <div className="flex justify-end mt-6">
      <button

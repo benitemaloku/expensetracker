@@ -43,7 +43,7 @@ exports.getAllIncome = async (req, res) => {
 // Delete Income Source
 exports.deleteIncome = async (req, res) => {
   try {
-    const income = await Income.findByIdAndDelete(req.params.id); // ✅ fshin direkt
+    const income = await Income.findByIdAndDelete(req.params.id); 
 
     if (!income) {
       return res.status(404).json({ message: "Income not found" });

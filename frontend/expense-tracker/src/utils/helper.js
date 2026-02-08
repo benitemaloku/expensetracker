@@ -20,7 +20,6 @@ export const getInitials = (name) => {
     return initials.toUpperCase();
 };
 
-//ndarja me "." te shumave 
 export const addThousandsSeparator = (num) => {
     if(num == null || isNaN(num)) return "";
 

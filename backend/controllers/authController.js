@@ -49,7 +49,7 @@ exports.registerUser = async (req, res) => {
 
 // Login User
 exports.loginUser = async (req, res) => {
-  const { email, password } = req.body; // ✅ KJO MUNGONTE
+  const { email, password } = req.body; 
 
   if (!email || !password) {
     return res.status(400).json({ message: "All fields are required" });
@@ -93,6 +93,42 @@ exports.getUserInfo = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       message: "Error fetching user info",
+      error: error.message,
+    });
+  }
+};
+
+// Update User Info
+exports.updateUser = async (req, res) => {
+  try {
+    const { fullName, profileImageUrl } = req.body;
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    if (fullName) user.fullName = fullName;
+
+    if (req.file) {
+     user.profileImageUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+    } else if (profileImageUrl) {
+      user.profileImageUrl = profileImageUrl;
+    }
+
+    await user.save();
+
+    res.status(200).json({
+      id: user._id,
+      user: {
+        fullName: user.fullName,
+        email: user.email,
+        profileImageUrl: user.profileImageUrl,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Error updating user",
       error: error.message,
     });
   }

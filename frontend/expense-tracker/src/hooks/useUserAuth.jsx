@@ -27,7 +27,7 @@ useEffect(() => {
             console.error("Failed to fetch user info:", error);
             if(isMounted) {
                 clearUser();
-                navigator("/login");
+                navigate("/login");
             }
         }
     };

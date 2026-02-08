@@ -27,6 +27,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/income", incomeRoutes);
 app.use("/api/v1/expense", expenseRoutes);
 app.use("/api/v1/dashboard", dashboardRoutes);
+app.use("/uploads", express.static("uploads"));
 
 
 //Server uploade folder
