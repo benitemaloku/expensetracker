@@ -58,15 +58,19 @@ It is designed to assist users in managing their personal finances by tracking i
    git clone https://github.com/benitemaloku/expensetracker.git
    
 2. Navigate into the project folder and install dependencies:
+   ```bash
    npm install
 
-3. Start the development server:
+4. Start the development server:
+5. ```bash
    npm run dev
 
-4. Start the backend server:
+6. Start the backend server:
+7. ```bash
    node server.js
    
   
+
 
 
 
