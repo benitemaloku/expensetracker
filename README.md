@@ -47,6 +47,14 @@ It is designed to assist users in managing their personal finances by tracking i
 
 - **Frontend**: [Vite](https://vitejs.dev/), [React.js](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/)  
 - **Backend**: [Node.js](https://nodejs.org/), [Express.js](https://expressjs.com/)  
-- **Database**: [MongoDB](https://www.mongodb.com/)  
+- **Database**: [MongoDB](https://www.mongodb.com/)
+
+---
+
+## Installation & Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/benitemaloku/expense-tracker.git
 
 
