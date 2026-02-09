@@ -4,7 +4,7 @@ Expense Tracker is a web application designed to assist individuals in managing 
 It offers a simple way to record, visualize, download and delete income and expenses, with a modern and responsive interface.
 
 
-##Features
+#Features
 
 **User Authentication:**
    - Login page
@@ -23,3 +23,4 @@ It offers a simple way to record, visualize, download and delete income and expe
     - Add expenses
     - Delete expenses
     - Download data
+
