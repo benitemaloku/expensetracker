@@ -62,15 +62,9 @@ It is designed to assist users in managing their personal finances by tracking i
    npm install
 
 4. Start the development server:
-5. ```bash
+   ```bash
    npm run dev
 
 6. Start the backend server:
-7. ```bash
+   ```bash
    node server.js
-   
-  
-
-
-
-
