@@ -11,7 +11,7 @@ It is designed to assist users in managing their personal finances by tracking i
    - Secure login and sign-up using **JWT authentication**.
 
 2. **Dashboard Overview**  
-   - Displays **Total Balance**, **Income**, and **Expenses** in summary cards.
+   - Displays **Total Balance**, **Income** and **Expenses** in summary cards.
 
 3. **Income Management**  
    - Add, view, delete, and export income sources.
@@ -28,14 +28,18 @@ It is designed to assist users in managing their personal finances by tracking i
 7. **Reports**  
    - Download all income and expense data in **Excel format**.
 
-8. **Mobile Responsive UI**  
-   - Works seamlessly across desktops, tablets, and mobile devices.
+8. **Profile Management**  
+   - Update **name** and **profile picture** for a personalized experience.
 
-9. **Intuitive Navigation**  
-   - Sidebar menu with easy access to Dashboard, Income, Expenses, and Logout.
+9. **Mobile Responsive UI**  
+   - Works seamlessly across desktops, tablets and mobile devices.
 
-10. **Delete Functionality**  
+10. **Intuitive Navigation**  
+    - Sidebar menu with easy access to Dashboard, Income, Expenses, Edit Profile and Logout.
+
+11. **Delete Functionality**  
     - Hover over income/expense cards to reveal a delete button for quick removal.
+
 
 ---
 
@@ -44,4 +48,5 @@ It is designed to assist users in managing their personal finances by tracking i
 - **Frontend**: [Vite](https://vitejs.dev/), [React.js](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/)  
 - **Backend**: [Node.js](https://nodejs.org/), [Express.js](https://expressjs.com/)  
 - **Database**: [MongoDB](https://www.mongodb.com/)  
+
 
