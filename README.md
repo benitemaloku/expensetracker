@@ -24,4 +24,12 @@ It offers a simple way to record, visualize, download and delete income and expe
     - Delete expenses
     - Download data
 
+## Visualization
+Dynamic graphics on the Dashboard to compare income and expenses.
+Data can be downloaded for further analysis.
+
+## Technologies used
+- **Frontend** : [Vite](https://vitejs.dev/), [React.js](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/)
+- **Backend**: [Node.js](https://nodejs.org/)
+- **Database**: [MongoDB](https://www.mongodb.com/)
 
