@@ -55,6 +55,7 @@ It is designed to assist users in managing their personal finances by tracking i
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/benitemaloku/expense-tracker.git
+   git clone https://github.com/benitemaloku/expensetracker.git
+
 
 
