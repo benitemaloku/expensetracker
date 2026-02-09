@@ -1,7 +1,7 @@
 # Full Stack Expense Tracker App (MERN)
 
-Expense Tracker is a full-stack web application built with the **MERN stack** (MongoDB, Express.js, React.js, Node.js).  
-It helps users manage their personal finances by tracking income and expenses with a modern, responsive interface.
+Expense Tracker is a full-stack web application built with the **MERN stack** (MongoDB, Express.js, React.js, Node.js).
+It is designed to assist users in managing their personal finances by tracking income and expenses, and it offers a modern, responsive interface.
 
 ---
 
@@ -44,3 +44,4 @@ It helps users manage their personal finances by tracking income and expenses wi
 - **Frontend**: [Vite](https://vitejs.dev/), [React.js](https://react.dev/), [Tailwind CSS](https://tailwindcss.com/)  
 - **Backend**: [Node.js](https://nodejs.org/), [Express.js](https://expressjs.com/)  
 - **Database**: [MongoDB](https://www.mongodb.com/)  
+
