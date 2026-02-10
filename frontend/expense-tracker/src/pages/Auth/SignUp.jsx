@@ -91,6 +91,7 @@ const SignUp = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
             <Input
               value={fullName}
               onChange={({ target }) => setFullName(target.value)}
@@ -106,7 +107,7 @@ const SignUp = () => {
               type="text"
             />
 
-            <div className="col-span-2">
+            <div className="col-span-1 md:col-span-2">
               <Input
                 value={password}
                 onChange={({ target }) => setPassword(target.value)}
