@@ -1,5 +1,5 @@
 // utils/apiPaths.js
-export const BASE_URL = "http://localhost:8000";
+export const BASE_URL = "https://api.bmxdev.site";
 
 export const API_PATHS = {
   AUTH: {
