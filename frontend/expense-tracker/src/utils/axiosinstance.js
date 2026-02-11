@@ -1,14 +1,13 @@
 import axios from "axios";
-import { VITE_BASE_URL } from "./apiPaths";
 
-//personalized instance
+// personalized instance
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
-    timeout: 10000,
-    headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-    },
+  timeout: 10000,
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "application/json",
+  },
 });
 
 axiosInstance.interceptors.request.use(
