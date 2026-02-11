@@ -1,6 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const cors = require("cors");
+const cors = require("cors");   // ← VETËM NJË HERË
 const path = require("path");
 const connectDB = require("./config/db");
 
@@ -13,22 +13,10 @@ const app = express();
 
 connectDB();
 
+// ✅ CORS (korrekt)
 app.use(cors({
-  origin: ["https://www.bmxdev.site"],
+  origin: "https://www.bmxdev.site",
   credentials: true
 }));
+
 app.use(express.json());
-
-app.get("/api/test", (req, res) => {
-  res.json({ message: "API working 🚀" });
-});
-
-app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/income", incomeRoutes);
-app.use("/api/v1/expense", expenseRoutes);
-app.use("/api/v1/dashboard", dashboardRoutes);
-
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
