@@ -13,10 +13,10 @@ const app = express();
 
 connectDB();
 
-// ✅ CORS (korrekt)
 app.use(cors({
-  origin: "https://www.bmxdev.site",
+  origin: ["https://www.bmxdev.site", "https://bmxdev.site"],
   credentials: true
 }));
+
 
 app.use(express.json());
