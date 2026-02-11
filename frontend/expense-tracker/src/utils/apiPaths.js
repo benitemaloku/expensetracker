@@ -1,5 +1,5 @@
 // utils/apiPaths.js
-export const VITE_BASE_URL = "https://api.bmxdev.site";
+export const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 export const API_PATHS = {
   AUTH: {

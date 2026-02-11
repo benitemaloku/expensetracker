@@ -14,7 +14,7 @@ const app = express();
 connectDB();
 
 app.use(cors({
-  origin: ["https://bmxdev.site", "https://www.bmxdev.site"],
+  origin: ["https://www.bmxdev.site"],
   credentials: true
 }));
 app.use(express.json());
