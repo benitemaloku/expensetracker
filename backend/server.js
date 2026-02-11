@@ -13,15 +13,10 @@ const app = express();
 
 connectDB();
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      process.env.CLIENT_URL,
-    ],
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: ["https://bmxdev.site", "https://www.bmxdev.site"],
+  credentials: true
+}));
 app.use(express.json());
 
 app.get("/api/test", (req, res) => {
