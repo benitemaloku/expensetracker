@@ -14,7 +14,7 @@ const app = express();
 connectDB();
 
 app.use(cors({
-  origin: ["https://www.bmxdev.site", "https://bmxdev.site"],
+  origin: ["https://expensetracker-tnaw.onrender.com"],
   credentials: true
 }));
 
