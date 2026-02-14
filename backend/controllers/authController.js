@@ -121,7 +121,6 @@ exports.updateUser = async (req, res) => {
 
     await user.save();
 
-    // Kthe gjithmonë user-in me të dhënat e plota
     res.status(200).json({
       id: user._id,
       user: {
