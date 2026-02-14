@@ -18,7 +18,6 @@ router.post("/upload-image", upload.single("image"), (req, res) => {
 
   const imageUrl = `${process.env.BASE_URL}/uploads/${req.file.filename}`;
 
-
   res.status(200).json({ imageUrl });
 });
 
