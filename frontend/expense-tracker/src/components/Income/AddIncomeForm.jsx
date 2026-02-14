@@ -32,7 +32,7 @@ export const AddIncomeForm = ({onAddIncome}) => {
                         value={income.amount}
                         onChange={({target}) => handleChange("amount", target.value)}
                         label="Amount"
-                        placeholder=""
+                        placeholder="€"
                         type="number"
                     />
 
@@ -40,7 +40,7 @@ export const AddIncomeForm = ({onAddIncome}) => {
                         value={income.date}
                         onChange={({target}) => handleChange("date", target.value)}
                         label="Date"
-                        placeholder=""
+                        placeholder="DD-MM-YYYY"
                         type="date"
                     />
                     
