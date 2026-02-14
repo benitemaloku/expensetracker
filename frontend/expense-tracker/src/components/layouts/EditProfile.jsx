@@ -8,6 +8,7 @@ import Input from "../Inputs/Input";
 
 const EditProfile = ({ isOpen, onClose }) => {
   const { user, updateUser } = useContext(UserContext);
+
   const [fullName, setFullName] = useState(user?.fullName || "");
   const [image, setImage] = useState(null);
 
@@ -17,6 +18,7 @@ const EditProfile = ({ isOpen, onClose }) => {
     try {
       const formData = new FormData();
       formData.append("fullName", fullName);
+
       if (image) {
         formData.append("profileImage", image);
       }
@@ -24,7 +26,9 @@ const EditProfile = ({ isOpen, onClose }) => {
       const response = await axiosInstance.put(
         API_PATHS.AUTH.UPDATE_USER,
         formData,
-        { headers: { "Content-Type": "multipart/form-data" } }
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
       );
 
       if (response.status === 200) {
@@ -32,7 +36,10 @@ const EditProfile = ({ isOpen, onClose }) => {
         onClose();
       }
     } catch (err) {
-      console.error("Error updating profile:", err.response?.data || err.message);
+      console.error(
+        "Error updating profile:",
+        err.response?.data || err.message
+      );
       alert(
         "Error updating profile: " +
           (err.response?.data?.message || "Unknown error")
@@ -43,22 +50,27 @@ const EditProfile = ({ isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Edit Profile">
       <form onSubmit={handleUpdateProfile} className="flex flex-col gap-4">
+        
         <Input
           value={fullName}
-          onChange={({ target }) => setFullName(target.value)}
+          onChange={(e) => setFullName(e.target.value)}
           label="Full Name"
           placeholder="Enter new name"
           type="text"
-          className="border p-2 rounded"
         />
-        <ProfilePhotoSelector image={image} setImage={setImage} />
+
+        <ProfilePhotoSelector
+          image={image}
+          setImage={setImage}
+        />
 
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition"
+          className="bg-blue-600 hover:bg-blue-700 text-white py-2.5 rounded-lg transition font-medium"
         >
-          Save
+          Save Changes
         </button>
+
       </form>
     </Modal>
   );
