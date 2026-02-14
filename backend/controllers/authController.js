@@ -111,7 +111,7 @@ exports.updateUser = async (req, res) => {
     if (fullName) user.fullName = fullName;
 
     if (req.file) {
-     user.profileImageUrl = `${process.env.VITE_BASE_URL}/uploads/${req.file.filename}`;
+     user.profileImageUrl = `${process.env.BASE_URL}/uploads/${req.file.filename}`;
     } else if (profileImageUrl) {
       user.profileImageUrl = profileImageUrl;
     }
