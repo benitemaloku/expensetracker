@@ -112,6 +112,7 @@ exports.updateUser = async (req, res) => {
 
     if (req.file) {
       const imageUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+      user.profileImageUrl = imageUrl;   
     } else if (profileImageUrl) {
       user.profileImageUrl = profileImageUrl;
     }
