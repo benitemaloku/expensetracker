@@ -1,3 +1,4 @@
+// SideMenu.jsx
 import React, { useContext, useState } from "react";
 import { SIDE_MENU_DATA } from "../../utils/data";
 import { UserContext } from "../../context/UserProvider";
@@ -32,17 +33,10 @@ const SideMenu = ({ activeMenu, openEditProfile = () => {} }) => {
     navigate("/login");
   };
 
-  const topMenu = SIDE_MENU_DATA.filter(
-    (item) => item.path !== "/edit-profile" && item.path !== "logout"
-  );
-
-  const bottomMenu = SIDE_MENU_DATA.filter(
-    (item) => item.path === "/edit-profile" || item.path === "logout"
-  );
-
   return (
     <div className="w-64 h-[calc(100vh-61px)] bg-white border-r border-gray-200 p-5 flex flex-col">
 
+      {/* User info */}
       <div className="flex flex-col items-center justify-center gap-3 mt-3 mb-7">
         {user?.profileImageUrl ? (
           <img
@@ -64,23 +58,7 @@ const SideMenu = ({ activeMenu, openEditProfile = () => {} }) => {
         </h5>
       </div>
 
-      <div className="flex flex-col">
-        {topMenu.map((item, index) => (
-          <button
-            key={index}
-            className={`w-full flex items-center gap-4 text-[15px] py-3 px-6 rounded-lg mb-3 transition ${
-              activeMenu === item.label
-                ? "text-white bg-primary"
-                : "hover:bg-gray-100"
-            }`}
-            onClick={() => handleClick(item.path)}
-          >
-            <item.icon className="text-xl" />
-            {item.label}
-          </button>
-        ))}
-      </div>
-
+      {/* Menu items */}
       <div className="flex flex-col">
         {SIDE_MENU_DATA.map((item, index) => (
           <button
@@ -98,6 +76,7 @@ const SideMenu = ({ activeMenu, openEditProfile = () => {} }) => {
         ))}
       </div>
 
+      {/* Logout modal */}
       <Modal
         isOpen={openLogoutAlert}
         onClose={() => setOpenLogoutAlert(false)}
