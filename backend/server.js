@@ -10,6 +10,8 @@ const dashboardRoutes = require("./routes/dashboardRoutes");
 
 const app = express();
 
+app.set("trust proxy", 1);
+
 connectDB();
 
 // CORS 
@@ -23,13 +25,15 @@ app.use(
 // JSON 
 app.use(express.json());
 
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
 // Routes
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/income", incomeRoutes);
 app.use("/api/v1/expense", expenseRoutes);
 app.use("/api/v1/dashboard", dashboardRoutes);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
