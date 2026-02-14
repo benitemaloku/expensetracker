@@ -108,17 +108,20 @@ exports.updateUser = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    if (fullName) user.fullName = fullName;
+    if (fullName) {
+      user.fullName = fullName;
+    }
 
     if (req.file) {
       const imageUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
-      user.profileImageUrl = imageUrl;   
+      user.profileImageUrl = imageUrl;
     } else if (profileImageUrl) {
       user.profileImageUrl = profileImageUrl;
     }
 
     await user.save();
 
+    // Kthe gjithmonë user-in me të dhënat e plota
     res.status(200).json({
       id: user._id,
       user: {
