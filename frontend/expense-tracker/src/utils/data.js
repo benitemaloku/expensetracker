@@ -27,13 +27,13 @@ export const SIDE_MENU_DATA = [
     path: "/expense",
   },
     {
-    id: "07",
+    id: "04",
     label: "Edit Profile",
     icon: LuPencil,
     path: "/edit-profile",
   },
   {
-    id: "08",
+    id: "05",
     label: "Logout",
     icon: LuLogOut,
     path: "logout",
