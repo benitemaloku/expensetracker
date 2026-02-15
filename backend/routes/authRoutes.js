@@ -12,24 +12,23 @@ const upload = require("../middleware/uploadMiddleware");
 
 const router = express.Router();
 
-// Auth routes
-router.post("/register", registerUser);
-router.post("/login", loginUser);
-router.get("/getUser", protect, getUserInfo);
-router.put("/updateUser", protect, upload.single("profileImage"), updateUser);
+// ----------------- AUTH ROUTES -----------------
+router.post("/register", registerUser);               // Register new user
+router.post("/login", loginUser);                     // Login user
+router.get("/getUser", protect, getUserInfo);        // Get logged-in user info
+router.put("/updateUser", protect, upload.single("profileImage"), updateUser); // Update user
 
-// Password reset routes
-router.post("/forgotPassword", forgotPassword);
-router.put("/reset/:token", resetPassword);
+// ----------------- PASSWORD RESET -----------------
+router.post("/forgotPassword", forgotPassword);      // Send reset link
+router.put("/reset/:token", resetPassword);          // Reset password using token
 
-// Image upload route
+// ----------------- IMAGE UPLOAD -----------------
 router.post("/upload-image", upload.single("image"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ message: "No file uploaded" });
   }
 
   const imageUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
-
   res.status(200).json({ imageUrl });
 });
 
