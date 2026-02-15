@@ -1,4 +1,3 @@
-// routes => incomeRoutes.js
 const express = require("express");
 const {
     addIncome,
