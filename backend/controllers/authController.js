@@ -10,21 +10,27 @@ const generateToken = (id) => {
 };
 // Helper for sending email
 const sendEmail = async (to, subject, text) => {
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
+  try {
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    });
 
-  await transporter.sendMail({
-    from: process.env.EMAIL_USER,
-    to,
-    subject,
-    text,
-  });
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to,
+      subject,
+      text,
+    });
+
+  } catch (error) {
+    console.error("Email failed:", error.message);
+  }
 };
+
 
 // Register User
 exports.registerUser = async (req, res, next) => {
