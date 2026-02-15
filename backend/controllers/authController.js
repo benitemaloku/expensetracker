@@ -10,26 +10,34 @@ const generateToken = (id) => {
 };
 // Helper for sending email
 const sendEmail = async (to, subject, text) => {
-  try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false, // TLS
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+    connectionTimeout: 5000,  // 5 sekonda max
+    greetingTimeout: 5000,
+    socketTimeout: 5000,
+  });
 
+  try {
     await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+      from: `"Expense Tracker" <${process.env.EMAIL_USER}>`,
       to,
       subject,
       text,
     });
 
+    console.log("Email sent successfully");
   } catch (error) {
     console.error("Email failed:", error.message);
+    throw new Error("Email sending failed");
   }
 };
+
 
 
 // Register User
