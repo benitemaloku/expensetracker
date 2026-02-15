@@ -27,7 +27,7 @@ const sendEmail = async (to, subject, text) => {
 };
 
 // Register User
-exports.registerUser = async (req, res) => {
+exports.registerUser = async (req, res, next) => {
   const { fullName, email, password, profileImageUrl } = req.body;
 
   if (!fullName || !email || !password) {
@@ -43,7 +43,7 @@ exports.registerUser = async (req, res) => {
     const user = await User.create({
       fullName,
       email,
-      password,
+      password, // do të hash-het automatikisht nga modeli
       profileImageUrl,
     });
 
@@ -57,6 +57,7 @@ exports.registerUser = async (req, res) => {
       token: generateToken(user._id),
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({
       message: "Error registering user",
       error: error.message,
@@ -64,10 +65,9 @@ exports.registerUser = async (req, res) => {
   }
 };
 
-
 // Login User
-exports.loginUser = async (req, res) => {
-  const { email, password } = req.body; 
+exports.loginUser = async (req, res, next) => {
+  const { email, password } = req.body;
 
   if (!email || !password) {
     return res.status(400).json({ message: "All fields are required" });
@@ -90,6 +90,7 @@ exports.loginUser = async (req, res) => {
       token: generateToken(user._id),
     });
   } catch (error) {
+    console.error(error);
     res.status(500).json({
       message: "Error logging in",
       error: error.message,
