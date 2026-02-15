@@ -191,7 +191,12 @@ exports.forgotPassword = async (req, res) => {
 
     console.log("RESET TOKEN (use in Postman):", resetToken);
 
-    await sendEmail(user.email, "Password Reset", message);
+    try {
+      await sendEmail(user.email, "Password Reset", message);
+    } catch (err) {
+      console.error("Email error:", err.message);
+    }
+
 
     res.status(200).json({ 
       message: "Reset link sent to your email",
