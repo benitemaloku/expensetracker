@@ -21,6 +21,7 @@ const DashboardLayout = ({ children, activeMenu }) => {
 
       {user ? (
         <div className="flex">
+          {/* Sidebar */}
           <div className="max-[1080px]:hidden">
             <SideMenu
               activeMenu={activeMenu}
@@ -28,7 +29,8 @@ const DashboardLayout = ({ children, activeMenu }) => {
             />
           </div>
 
-          <div className="grow mx-5">{children}</div>
+          {/* Content area with margin to avoid overlap */}
+          <div className="grow ml-64 mx-5">{children}</div>
         </div>
       ) : null}
 
