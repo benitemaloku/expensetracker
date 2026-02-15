@@ -15,6 +15,11 @@ app.set("trust proxy", 1);
 
 connectDB();
 
+app.get("/", (req, res) => {
+  res.send("API is running...");
+});
+
+
 // CORS 
 app.use(
   cors({
