@@ -91,6 +91,12 @@ export const Login = () => {
               Sign Up
             </Link>
           </p>
+          <p className='text-[13px] text-slate-800 mt-3'>
+            Forgot your password?{" "}
+            <Link className="font-medium text-primary underline" to="/forgot-password">
+              Reset here
+            </Link>
+          </p>
 
         </form>
       </div>
