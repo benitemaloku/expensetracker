@@ -1,4 +1,3 @@
-// SideMenu.jsx
 import React, { useContext, useState } from "react";
 import { SIDE_MENU_DATA } from "../../utils/data";
 import { UserContext } from "../../context/UserProvider";
@@ -9,7 +8,6 @@ import Modal from "../Modal";
 
 const SideMenu = ({ activeMenu, openEditProfile = () => {} }) => {
   const [openLogoutAlert, setOpenLogoutAlert] = useState(false);
-
   const { user, clearUser } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -18,12 +16,10 @@ const SideMenu = ({ activeMenu, openEditProfile = () => {} }) => {
       openEditProfile();
       return;
     }
-
     if (route === "logout") {
       setOpenLogoutAlert(true);
       return;
     }
-
     navigate(route);
   };
 
@@ -34,8 +30,7 @@ const SideMenu = ({ activeMenu, openEditProfile = () => {} }) => {
   };
 
   return (
-    <div className="w-64 h-[calc(100vh-61px)] bg-white border-r border-gray-200 p-5 flex flex-col">
-
+    <div className="fixed top-[61px] left-0 w-64 h-[calc(100vh-61px)] bg-white border-r border-gray-200 p-5 flex flex-col">
       {/* User info */}
       <div className="flex flex-col items-center justify-center gap-3 mt-3 mb-7">
         {user?.profileImageUrl ? (
@@ -52,10 +47,7 @@ const SideMenu = ({ activeMenu, openEditProfile = () => {} }) => {
             style="text-xl"
           />
         )}
-
-        <h5 className="text-gray-950 font-medium">
-          {user?.fullName}
-        </h5>
+        <h5 className="text-gray-950 font-medium">{user?.fullName}</h5>
       </div>
 
       {/* Menu items */}
