@@ -8,9 +8,13 @@ import{
 } from "react-router-dom";
 import Login from './pages/Auth/Login';
 import SignUp from './pages/Auth/SignUp';
+import ForgotPassword from './pages/Auth/ForgotPassword';
+import ResetPassword from './pages/Auth/ResetPassword';
+
 import Home from './pages/Dashboard/Home';
 import Income from './pages/Dashboard/Income';
 import Expense from './pages/Dashboard/Expense';
+
 import UserProvider from "./context/UserProvider";
 import {Toaster}  from "react-hot-toast";
 
@@ -23,6 +27,8 @@ const App = () => {
             <Route path="/" element={<Root/>} />
             <Route path='/login' exact element={<Login/>} />
             <Route path='/signUp' exact element={<SignUp/>} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/reset-password/:token" element={<ResetPassword />} />
             <Route path='/dashboard' exact element={<Home/>} />
             <Route path='/income' exact element={<Income/>} />
             <Route path='/expense' exact element={<Expense/>} />
@@ -39,8 +45,8 @@ const App = () => {
         }}
       />
     </UserProvider>
-  )
-}
+  );
+};
 
 export default App
 
@@ -53,4 +59,4 @@ const Root = () => {
    ) : ( 
    <Navigate to="/login" />
    );
-}
+};
