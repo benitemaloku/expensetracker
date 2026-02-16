@@ -5,7 +5,7 @@ export const API_PATHS = {
     GET_USER_INFO: "/auth/getUser",
     UPDATE_USER: "/auth/updateUser",
     FORGOT_PASSWORD: "/auth/forgotPassword",  
-    RESET: "/auth/reset",   
+    RESET: (token) => `/auth/reset/${token}`,  
   },
   DASHBOARD: {
     GET_DATA: "/dashboard",
