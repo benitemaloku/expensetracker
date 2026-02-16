@@ -30,7 +30,7 @@ const SideMenu = ({ activeMenu, openEditProfile = () => {} }) => {
   };
 
   return (
-    <div className="fixed top-[61px] left-0 w-64 h-[calc(100vh-61px)] bg-white border-r border-gray-200 p-5 flex flex-col">
+    <div className="w-64 h-full bg-white border-r border-gray-200 p-5 flex flex-col">
       {/* User info */}
       <div className="flex flex-col items-center justify-center gap-3 mt-3 mb-7">
         {user?.profileImageUrl ? (
