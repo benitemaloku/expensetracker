@@ -50,16 +50,34 @@ const SideMenu = ({ activeMenu, openEditProfile = () => {} }) => {
         <h5 className="text-gray-950 font-medium">{user?.fullName}</h5>
       </div>
 
-      {/* Menu items */}
+  {/* Menu  */}
       <div className="flex flex-col">
-        {SIDE_MENU_DATA.map((item, index) => (
+        {SIDE_MENU_DATA.filter(
+          (item) => item.path !== "/edit-profile" && item.path !== "logout"
+        ).map((item, index) => (
           <button
-            key={index}
-            className={`w-full flex items-center gap-4 text-[15px] py-3 px-6 rounded-lg mb-3 transition ${
-              activeMenu === item.label
-                ? "text-white bg-primary"
-                : "hover:bg-gray-100"
-            }`}
+            key={`menu_${index}`}
+            className={`w-full flex items-center gap-4 text-[15px] ${
+              activeMenu === item.label ? "text-white bg-primary" : ""
+            } py-3 px-6 rounded-lg mb-3`}
+            onClick={() => handleClick(item.path)}
+          >
+            <item.icon className="text-xl" />
+            {item.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Edit Profile + Logout down */}
+      <div className="mt-auto flex flex-col">
+        {SIDE_MENU_DATA.filter(
+          (item) => item.path === "/edit-profile" || item.path === "logout"
+        ).map((item, index) => (
+          <button
+            key={`menu_bottom_${index}`}
+            className={`w-full flex items-center gap-4 text-[15px] ${
+              activeMenu === item.label ? "text-white bg-primary" : ""
+            } py-3 px-6 rounded-lg mb-3`}
             onClick={() => handleClick(item.path)}
           >
             <item.icon className="text-xl" />
@@ -79,23 +97,7 @@ const SideMenu = ({ activeMenu, openEditProfile = () => {} }) => {
           onDelete={handleLogout}
         />
       </Modal>
-       {/* Edit Profile + Logout down */}
-      <div className="mt-auto flex flex-col">
-        {SIDE_MENU_DATA.filter(
-          (item) => item.path === "/edit-profile" || item.path === "logout"
-        ).map((item, index) => (
-          <button
-            key={`menu_bottom_${index}`}
-            className={`w-full flex items-center gap-4 text-[15px] ${
-              activeMenu === item.label ? "text-white bg-primary" : ""
-            } py-3 px-6 rounded-lg mb-3`}
-            onClick={() => handleClick(item.path)}
-          >
-            <item.icon className="text-xl" />
-            {item.label}
-          </button>
-        ))}
-      </div>
+
     </div>
   );
 };
