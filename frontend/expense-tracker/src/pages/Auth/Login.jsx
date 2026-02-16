@@ -63,12 +63,12 @@ export const Login = () => {
           Plaease enter your details to log in
         </p>
 
-        <form onSubmit={handleLogin}>
+ <form onSubmit={handleLogin}>
           <Input
             value={email}
             onChange={({ target }) => setEmail(target.value)}
             label="Email Address"
-            placeholder="john@example.com"
+            placeholder="name@example.com"
             type="text"
           />
 
@@ -76,28 +76,29 @@ export const Login = () => {
             value={password}
             onChange={({ target }) => setPassword(target.value)}
             label="Password"
-            placeholder="Min 8 characters"
+            placeholder="Password"
             type="password"
           />
 
           {error && <p className="text-red-500 text-xs pc-2.5">{error}</p>}
           
-          <button type="submit" className="btn-primary">
-            LOG IN
-          </button>
-          <p className='text-[13px] text-slate-800 mt-3'>
-            Don't have an account?{' '}
-            <Link className="font-medium text-primary underline" to="/signup">
-              Sign Up
-            </Link>
-          </p>
-          <p className='text-[13px] text-slate-800 mt-3'>
-            Forgot your password?{" "}
-            <Link className="font-medium text-primary underline" to="/forgot-password">
-              Reset here
-            </Link>
-          </p>
+          <div className="flex flex-col items-center mt-4 w-full">
+            <button type="submit" className="btn-primary w-full">
+              LOG IN
+            </button>
 
+            <Link
+              to="/forgot-password"
+            className="mt-2 text-primary font-medium text-[13px]">
+              Forgot password?
+            </Link>
+
+            <Link
+              to="/signup"
+              className="btn-secondary w-full mt-3 text-center py-2 rounded">
+              Create new account
+            </Link>
+          </div>
         </form>
       </div>
     </AuthLayout>
