@@ -21,16 +21,16 @@ const DashboardLayout = ({ children, activeMenu }) => {
 
       {user ? (
         <div className="flex">
-          {/* Sidebar */}
-          <div className="max-[1080px]:hidden">
+          {/* Sidebar desktop */}
+          <div className="hidden lg:block">
             <SideMenu
               activeMenu={activeMenu}
               openEditProfile={() => setOpenEditProfile(true)}
             />
           </div>
 
-          {/* Content area with margin to avoid overlap */}
-          <div className="grow ml-64 mx-5">{children}</div>
+          {/* Content area */}
+          <div className="grow mx-5">{children}</div>
         </div>
       ) : null}
 
