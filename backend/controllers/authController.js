@@ -15,7 +15,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 const sendEmail = async (to, subject, html) => {
   try {
     await resend.emails.send({
-      from: "Expense Tracker <onboarding@resend.dev>",
+      from: "Expense Tracker <maloku.x3@gmail.com>",
       to,
       subject,
       html,
