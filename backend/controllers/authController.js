@@ -45,7 +45,7 @@ exports.registerUser = async (req, res, next) => {
     const user = await User.create({
       fullName,
       email,
-      password, // do të hash-het automatikisht nga modeli
+      password, 
       profileImageUrl,
     });
 
@@ -168,14 +168,12 @@ exports.forgotPassword = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
-    // Gjenero token
     const resetToken = crypto.randomBytes(32).toString("hex");
     user.resetPasswordToken = resetToken;
-    user.resetPasswordExpire = Date.now() + 10 * 60 * 1000; // 10 minuta
+    user.resetPasswordExpire = Date.now() + 10 * 60 * 1000; 
 
     await user.save();
 
-    // Krijo link
     const resetUrl = `${process.env.CLIENT_URL}/reset-password/${resetToken}`;
     const message = `
       <p>You requested a password reset.</p>
@@ -193,7 +191,7 @@ exports.forgotPassword = async (req, res) => {
 
     res.status(200).json({ 
       message: "Reset link sent to your email",
-      resetToken // mund ta heqësh në production për siguri
+      resetToken 
     });
 
   } catch (error) {
