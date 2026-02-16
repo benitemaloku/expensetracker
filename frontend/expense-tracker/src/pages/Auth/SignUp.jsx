@@ -89,21 +89,21 @@ const SignUp = () => {
           <div className="mb-4">
             <ProfilePhotoSelector image={profilePic} setImage={setProfilePic} />
           </div>
-
+          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
             <Input
               value={fullName}
               onChange={({ target }) => setFullName(target.value)}
-              label="Full Name"
-              placeholder="John Doe"
+              label="Name"
+              placeholder="Full Name"
               type="text"
             />
             <Input
               value={email}
               onChange={({ target }) => setEmail(target.value)}
               label="Email Address"
-              placeholder="john@example.com"
+              placeholder="name@example.com"
               type="text"
             />
 
@@ -112,7 +112,7 @@ const SignUp = () => {
                 value={password}
                 onChange={({ target }) => setPassword(target.value)}
                 label="Password"
-                placeholder="Min 8 characters"
+                placeholder="Password"
                 type="password"
               />
             </div>
@@ -124,12 +124,14 @@ const SignUp = () => {
             SIGN UP
           </button>
 
-          <p className="text-[13px] text-slate-800 mt-3">
-            Already have an account?{' '}
-            <Link className="font-medium text-primary underline" to="/login">
-              Log In
+          <div className="flex flex-col items-center mt-3 w-full">
+            <Link
+              to="/login"
+              className="btn-secondary w-full text-center py-2 rounded"
+            >
+              I already have an account
             </Link>
-          </p>
+          </div>
         </form>
       </div>
     </AuthLayout>
