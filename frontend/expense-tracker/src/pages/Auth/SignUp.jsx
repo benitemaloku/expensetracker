@@ -7,12 +7,10 @@ import ProfilePhotoSelector from '../../components/Inputs/ProfilePhotoSelector';
 import axiosInstance from '../../utils/axiosinstance';
 import { API_PATHS } from '../../utils/apiPaths';
 import { UserContext } from "../../context/UserProvider";
-import uploadImage from '../../utils/uploadImage';
 
 
 
 const SignUp = () => {
-  const [profilePic, setProfilePic] = useState(null);
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,55 +24,45 @@ const SignUp = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    let profileImageUrl = "";
+  if (!fullName) {
+    setError("Please enter your full name.");
+    return;
+  }
 
-    if (!fullName) {
-      setError("Please enter your full name.");
-      return;
+  if (!validateEmail(email)) {
+    setError("Please enter a valid email address.");
+    return;
+  }
+
+  if (!password || password.length < 8) {
+    setError("Password must be at least 8 characters.");
+    return;
+  }
+
+  setError("");
+
+  try {
+    const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER, {
+      fullName,
+      email,
+      password
+    });
+
+    const { token, user } = response.data;
+
+    if (token) {
+      localStorage.setItem("token", token);
+      updateUser(user);
+      navigate("/dashboard");
     }
-
-    if (!validateEmail(email)) {
-      setError("Please enter a valid email address.");
-      return;
+  } catch (error) {
+    if (error.response && error.response.data.message) {
+      setError(error.response.data.message);
+    } else {
+      setError("Something went wrong. Please try again.");
     }
-
-    if (!password || password.length < 8) {
-      setError("Password must be at least 8 characters.");
-      return;
-    }
-
-    setError("");
-
-    try{
-        //Uploading a profile picture
-      if (profilePic) {
-        const imgUploadRes = await uploadImage(profilePic);
-        profileImageUrl = imgUploadRes.imageUrl || "";
-      }
-
-        // SignUp API Call
-      const response = await axiosInstance.post(API_PATHS.AUTH.REGISTER,{
-        fullName,
-        email,
-        password,
-        profileImageUrl
-      });
-
-      const { token, user } = response.data;
-
-      if(token){
-        localStorage.setItem("token", token);
-        updateUser(user);
-        navigate("/dashboard");
-      }
-    } catch (error) {
-      if (error.response && error.response.data.message) {
-        setError(error.response.data.message);
-      } else{
-        setError("Something went wrong. Please try again.")
-      }
-    }
-  };
+  }
+};
 
   return (
     <AuthLayout>
@@ -84,54 +72,43 @@ const SignUp = () => {
           Join us today by entering your details below.
         </p>
 
-        <form onSubmit={handleSignUp}>
-          {/* Profile Photo */}
-          <div className="mb-4">
-            <ProfilePhotoSelector image={profilePic} setImage={setProfilePic} />
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <form onSubmit={handleSignUp} className="flex flex-col gap-1.5">
+          <Input
+            value={fullName}
+            onChange={({ target }) => setFullName(target.value)}
+            label="Name"
+            placeholder="Full Name"
+            type="text"
+          />
 
-            <Input
-              value={fullName}
-              onChange={({ target }) => setFullName(target.value)}
-              label="Name"
-              placeholder="Full Name"
-              type="text"
-            />
-            <Input
-              value={email}
-              onChange={({ target }) => setEmail(target.value)}
-              label="Email Address"
-              placeholder="name@example.com"
-              type="text"
-            />
+          <Input
+            value={email}
+            onChange={({ target }) => setEmail(target.value)}
+            label="Email Address"
+            placeholder="name@example.com"
+            type="text"
+          />
 
-            <div className="col-span-1 md:col-span-2">
-              <Input
-                value={password}
-                onChange={({ target }) => setPassword(target.value)}
-                label="Password"
-                placeholder="Password"
-                type="password"
-              />
-            </div>
-          </div>
+          <Input
+            value={password}
+            onChange={({ target }) => setPassword(target.value)}
+            label="Password"
+            placeholder="Password"
+            type="password"
+          />
 
-          {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
+          {error && <p className="text-red-500 text-xs">{error}</p>}
 
-          <button type="submit" className="btn-primary mt-4">
+          <button type="submit" className="btn-primary w-full">
             SIGN UP
           </button>
 
-          <div className="flex flex-col items-center mt-3 w-full">
-            <Link
-              to="/login"
-              className="btn-secondary w-full text-center py-2 rounded"
-            >
-              I already have an account
-            </Link>
-          </div>
+          <Link
+            to="/login"
+            className="btn-secondary w-full mt-3 text-center py-2 rounded"
+          >
+            I already have an account
+          </Link>
         </form>
       </div>
     </AuthLayout>
