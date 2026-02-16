@@ -79,6 +79,23 @@ const SideMenu = ({ activeMenu, openEditProfile = () => {} }) => {
           onDelete={handleLogout}
         />
       </Modal>
+       {/* Edit Profile + Logout down */}
+      <div className="mt-auto flex flex-col">
+        {SIDE_MENU_DATA.filter(
+          (item) => item.path === "/edit-profile" || item.path === "logout"
+        ).map((item, index) => (
+          <button
+            key={`menu_bottom_${index}`}
+            className={`w-full flex items-center gap-4 text-[15px] ${
+              activeMenu === item.label ? "text-white bg-primary" : ""
+            } py-3 px-6 rounded-lg mb-3`}
+            onClick={() => handleClick(item.path)}
+          >
+            <item.icon className="text-xl" />
+            {item.label}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
