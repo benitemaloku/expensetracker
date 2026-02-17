@@ -2,10 +2,8 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-// Absolute path për uploads folder
 const uploadPath = path.join(__dirname, "../uploads");
 
-// Krijo folderin nëse nuk ekziston
 if (!fs.existsSync(uploadPath)) {
   fs.mkdirSync(uploadPath, { recursive: true });
 }
