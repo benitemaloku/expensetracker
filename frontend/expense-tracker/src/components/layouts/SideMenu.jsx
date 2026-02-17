@@ -85,7 +85,7 @@ const SideMenu = ({ activeMenu, openEditProfile = () => {} }) => {
         </button>
       ))}
     
-      <div className="w-full h-12 bg-white rounded-lg"></div>
+      <div className="block md:hidden w-full h-12 bg-white rounded-lg"></div>
     </div>
 
       {/* Logout modal */}
