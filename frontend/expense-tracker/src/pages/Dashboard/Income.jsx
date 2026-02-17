@@ -21,7 +21,6 @@ const Income = () => {
 
   const [openAddIncomeModal, setOpenAddIncomeModal] = useState(false);
 
-  // marrja e te dhenave
   const fetchIncomeDetails = async () => {
     if (loading) return;
 
