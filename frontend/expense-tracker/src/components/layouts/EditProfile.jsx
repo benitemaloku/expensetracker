@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Modal from "../Modal";
 import axiosInstance from "../../utils/axiosinstance";
 import { API_PATHS } from "../../utils/apiPaths";
@@ -9,8 +9,15 @@ import Input from "../Inputs/Input";
 const EditProfile = ({ isOpen, onClose }) => {
   const { user, updateUser } = useContext(UserContext);
 
-  const [fullName, setFullName] = useState(user?.fullName || "");
+  const [fullName, setFullName] = useState("");
   const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    if (user) {
+      setFullName(user.fullName || "");
+      setImage(user.profileImageUrl || null); 
+    }
+  }, [user, isOpen]);
 
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
@@ -19,20 +26,17 @@ const EditProfile = ({ isOpen, onClose }) => {
       const formData = new FormData();
       formData.append("fullName", fullName);
 
-      if (image) {
+      if (image && typeof image === "object") {
         formData.append("profileImage", image);
       }
 
       const response = await axiosInstance.put(
         API_PATHS.AUTH.UPDATE_USER,
-        formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-        }
+        formData
       );
 
       if (response.status === 200) {
-        updateUser(response.data.user || response.data);
+        updateUser(response.data.user);
         onClose();
       }
     } catch (err) {
