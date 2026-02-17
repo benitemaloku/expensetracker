@@ -17,7 +17,7 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.get("/getUser", protect, getUserInfo);
 
-// UPDATE USER (me foto)
+// UPDATE USER 
 router.put(
   "/updateUser",
   protect,
@@ -29,7 +29,6 @@ router.put(
 router.post("/forgotPassword", forgotPassword);
 router.put("/reset/:token", resetPassword);
 
-// OPTIONAL: Upload vetëm foto
 router.post(
   "/upload-image",
   protect,
