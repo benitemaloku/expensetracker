@@ -29,7 +29,7 @@ const Income = () => {
     try {
       const response = await axiosInstance.get(API_PATHS.INCOME.GET_ALL_INCOME);
       if (response.data) {
-        setIncomeData(response.data); //perditesime i incomedata
+        setIncomeData(response.data); 
       }
     } catch (error) {
       console.log("Something went wrong. Please try again", error);
@@ -40,7 +40,7 @@ const Income = () => {
   
   //Handle Add Income
   const handleAddIncome = async (income) => {
-  const { source, amount, date, icon } = income; //object destructuring
+  const { source, amount, date, icon } = income; 
 
  // validim
   if (!source.trim()) {
