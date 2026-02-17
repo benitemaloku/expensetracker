@@ -33,7 +33,6 @@ const Home = () => {
       const [loading, setLoading] = useState(false);
 
       
-    //marrja e t'dhenave
     const fetchDashboardData = async () => {
       console.log("FETCH DASHBOARD DATA CALLED");
 
