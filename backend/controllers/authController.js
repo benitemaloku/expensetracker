@@ -2,30 +2,11 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
+const sendEmail = require("../utils/sendEmail");
 
 // Generate JWT token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-};
-// Helper for sending email
-const { Resend } = require("resend");
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-const sendEmail = async (to, subject, html) => {
-  try {
-    await resend.emails.send({
-      from: "Expense Tracker <maloku.x3@gmail.com>",
-      to,
-      subject,
-      html,
-    });
-
-    console.log("Email sent successfully via Resend");
-  } catch (error) {
-    console.error("Resend email error:", error);
-    throw new Error("Email sending failed");
-  }
 };
 
 // Register User
@@ -164,41 +145,49 @@ exports.forgotPassword = async (req, res) => {
 
   try {
     const user = await User.findOne({ email });
+
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
 
     const resetToken = crypto.randomBytes(32).toString("hex");
+
     user.resetPasswordToken = resetToken;
-    user.resetPasswordExpire = Date.now() + 10 * 60 * 1000; 
+    user.resetPasswordExpire = Date.now() + 10 * 60 * 1000; // 10 minutes
 
     await user.save();
 
     const resetUrl = `${process.env.CLIENT_URL}/reset-password/${resetToken}`;
+
     const message = `
+      <h2>Password Reset Request</h2>
       <p>You requested a password reset.</p>
-      <p>Click the link below to reset your password:</p>
-      <a href="${resetUrl}">${resetUrl}</a>
+      <p>This link will expire in 10 minutes.</p>
+      <a href="${resetUrl}" 
+         style="display:inline-block;padding:10px 20px;background:#4F46E5;color:#fff;text-decoration:none;border-radius:5px;">
+         Reset Password
+      </a>
     `;
 
-    try {
-      await sendEmail(user.email, "Password Reset", message);
-      console.log("Reset email sent to:", user.email);
-    } catch (err) {
-      console.error("Email error:", err.message);
-      return res.status(500).json({ message: "Email sending failed" });
-    }
+    await sendEmail({
+      to: user.email,
+      subject: "Password Reset - Expense Tracker",
+      html: message,
+    });
 
-    res.status(200).json({ 
+    res.status(200).json({
       message: "Reset link sent to your email",
-      resetToken 
     });
 
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error sending reset link", error: error.message });
+    res.status(500).json({
+      message: "Error sending reset link",
+      error: error.message,
+    });
   }
 };
+
 
 
 // Reset Password
