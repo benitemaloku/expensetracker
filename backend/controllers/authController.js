@@ -160,18 +160,18 @@ exports.forgotPassword = async (req, res) => {
     const resetUrl = `${process.env.CLIENT_URL}/reset-password/${resetToken}`;
 
     const message = `
-      <h2>Password Reset Request</h2>
+      <h2>Hi, <br> Sorry to hear you’re having trouble logging into Instagram. We got a message that you forgot your password. If this was you, you can reset your password now.</h2>
       <p>You requested a password reset.</p>
-      <p>This link will expire in 10 minutes.</p>
       <a href="${resetUrl}" 
          style="display:inline-block;padding:10px 20px;background:#4F46E5;color:#fff;text-decoration:none;border-radius:5px;">
-         Reset Password
+         Reset your password
       </a>
+      <p>If you don’t want to reset your password, you can ignore this message - someone probably typed in your username or email address by mistake.</p>
     `;
 
     await sendEmail({
       to: user.email,
-      subject: "Password Reset - Expense Tracker",
+      subject: "Expense Tracke - Password Reset",
       html: message,
     });
 
