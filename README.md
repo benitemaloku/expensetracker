@@ -55,3 +55,17 @@ cd frontend/expense-tracker
 npm install
 npm run dev
 ```
+
+## Screenshots
+
+### Dashboard Overview
+![Dashboard Screenshot](https://benitemaloku.github.io/expensetracker/assets/dashboard.png)
+
+### Income Management
+![Income Screenshot](https://benitemaloku.github.io/expensetracker/assets/income.png)
+
+### Expense Management
+![Expense Screenshot](https://benitemaloku.github.io/expensetracker/assets/expense.png)
+
+### Charts & Reports
+![Charts Screenshot](https://benitemaloku.github.io/expensetracker/assets/charts.png)
