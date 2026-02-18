@@ -56,7 +56,7 @@ const ForgotPassword = () => {
             value={email}
             onChange={({ target }) => setEmail(target.value)}
             label="Email Address"
-            placeholder="john@example.com"
+            placeholder="name@example.com"
             type="email"
           />
 
