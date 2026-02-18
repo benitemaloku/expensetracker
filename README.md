@@ -38,5 +38,18 @@ This app helps users manage their income and expenses with secure authentication
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/mern-expense-tracker.git
-cd mern-expense-tracker
+https://github.com/benitemaloku/ExpenseTracker.git
+```
+Backend Setup
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+Frontend Setup
+```bash
+cd frontend/expense-tracker
+npm install
+npm run dev
+```
