@@ -39,7 +39,7 @@ const ResetPassword = () => {
             value={password}
             onChange={({ target }) => setPassword(target.value)}
             label="New Password"
-            placeholder="Min 8 characters"
+            placeholder="Password"
             type="password"
           />
 
