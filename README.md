@@ -8,11 +8,11 @@ This app helps users manage their income and expenses with secure authentication
 ## Features
 
 - **User Authentication** – Secure login and registration using JWT.  
-- **Password Reset & Forgot Password** – Email-based password recovery with **resend email functionality**.  
+- **Password Reset & Forgot Password** – Email-based password recovery with **resend email functionality**.
+- **Profile Editing** – Update name and profile photo. 
 - **Dashboard Summary** – Overview of total balance, income, and expenses.  
 - **Income Management** – Add, view, delete, and export income sources.  
-- **Expense Management** – Add, view, delete, and export expenses with category tracking.  
-- **Profile Editing** – Update name and profile photo.  
+- **Expense Management** – Add, view, delete, and export expenses with category tracking.   
 - **Interactive Charts** – Bar, pie, and line charts for income/expense visualization.  
 - **Recent Transactions** – Quick access to latest income and expense entries.  
 - **Reports** – Export all data in Excel format.  
