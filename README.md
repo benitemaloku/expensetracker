@@ -3,7 +3,7 @@
 A **Full Stack Expense Tracking Application** built with the **MERN stack (MongoDB, Express.js, React.js, Node.js)**.  
 This app helps users manage their income and expenses with secure authentication, interactive charts, and exportable reports.
 
-🔗 **Live Demo:** [Expense Tracker App](https://expensetracker-tnaw.onrender.com/login)
+🔗 **Live Demo:** [Expense Tracker](https://expensetracker-tnaw.onrender.com/login)
 
 ---
 
