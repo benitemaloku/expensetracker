@@ -40,7 +40,7 @@ This app helps users manage their income and expenses with secure authentication
 Clone the repository:
 
 ```bash
-https://github.com/benitemaloku/ExpenseTracker.git
+git clone https://github.com/benitemaloku/ExpenseTracker.git
 ```
 Backend Setup
 
