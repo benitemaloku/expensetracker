@@ -161,7 +161,7 @@ exports.forgotPassword = async (req, res) => {
 
     const message = `
       <p>Hi,</p>
-      <p>Sorry to hear you’re having trouble logging into Instagram. We got a message that you forgot your password. If this was you, you can reset your password now.</p>
+      <p>Sorry to hear you’re having trouble logging into Expense Tracker. We got a message that you forgot your password. If this was you, you can reset your password now.</p>
       <a href="${resetUrl}" 
          style="display:inline-block;padding:10px 20px;background:#4F46E5;color:#fff;text-decoration:none;border-radius:5px;">
          Reset your password
